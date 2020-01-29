@@ -68,8 +68,8 @@ body {
   border-width: 2px;
 }
 #gtco-main-nav form a.btn-info {
-  background: #01e6f8;
-  border-color: #01e6f8;
+  background: $main-color;
+  border-color: $main-color;
 }
 #gtco-main-nav form a.btn-outline-dark {
   border-color: #fff;
@@ -86,11 +86,11 @@ body {
   content: "";
   height: 600px;
   width: 900px;
-  background-image: -webkit-linear-gradient(-220deg, #1d3ede, #01e6f8);
-  background-image: -moz-linear-gradient(-220deg, #1d3ede, #01e6f8);
-  background-image: -ms-linear-gradient(-220deg, #1d3ede, #01e6f8);
-  background-image: -o-linear-gradient(-220deg, #1d3ede, #01e6f8);
-  background-image: linear-gradient(-220deg, #1d3ede, #01e6f8);
+  background-image: -webkit-linear-gradient(-220deg, #1d3ede, $main-color);
+  background-image: -moz-linear-gradient(-220deg, #1d3ede, $main-color);
+  background-image: -ms-linear-gradient(-220deg, #1d3ede, $main-color);
+  background-image: -o-linear-gradient(-220deg, #1d3ede, $main-color);
+  background-image: linear-gradient(-220deg, #1d3ede, $main-color);
   left: 49.5%;
   top: -50px;
   z-index: -1;
