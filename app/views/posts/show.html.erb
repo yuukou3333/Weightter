@@ -1,0 +1,25 @@
+<div class="main posts-show">
+  <div class="container">
+    <% if flash[:notice] %>
+      <div class="alert alert-primary"><%= flash[:notice] %></div>
+    <% end %>
+
+    <div class="posts-show-item">
+      <h2>
+        <%= @post.title %>
+      </h2>
+      <p>
+        <%= simple_format(@post.body) %>
+      </p>
+      <div class="post-time">
+        <%= @post.created_at %>
+      </div>
+
+      <!-- 投稿の制限 --> 
+        <div class="post-menus">
+          <%= link_to '編集', edit_post_path(@post) %>
+          <%= link_to '削除', @post, method: :delete, data:{ confirm: '投稿を削除してもよろしいですか？'} %>
+        </div>
+    </div>
+  </div>
+</div>

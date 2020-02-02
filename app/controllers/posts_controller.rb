@@ -10,9 +10,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(post_params)
+    @post = Post.new(post_params)
     if post.save
-      flash[:notice] = "「#{post.title}」の掲示板を作成しました"
+      flash[:notice] = "「#{@post.title}」を投稿しました"
       redirect_to post
     else
       redirect_to :back, flash: {
@@ -24,6 +24,28 @@ class PostsController < ApplicationController
 
   def show
   end
+
+  def edit
+    @post.attributes = flash[:post] if flash[:post]
+  end
+
+  def update
+    if @post.update(post_params)
+      redirect_to post
+    else
+      redirect_to :back, flash: {
+        post: post,
+        error_messages: @post.errors.full_messages
+      }
+    end
+  end
+
+  def destroy
+    @post.destroy
+    binding.pry
+    redirect_to posts_path, flash: { notice: "「#{@post.title}」という投稿が削除されました" }
+  end
+
 
 
   private

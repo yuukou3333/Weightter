@@ -1,5 +1,6 @@
-<%= form_with model:  post do |f| %>
+<%= render 'shared/error_messages' %>
 
+<%= form_with model:  post do |f| %>
   <div class="form-group">
     <%= f.label :title, 'タイトル' %>
     <%= f.text_field :title, class: 'form-control' %>
@@ -8,5 +9,5 @@
     <%= f.label :body, '本文' %>
     <%= f.text_area :body, class: 'form-control', rows: 10 %>
   </div>
-  <%= f.submit '保存', class: 'btn btn-primary' %>
+  <%= f.submit '投稿する', class: 'btn btn-primary' %>
 <% end %>
