@@ -10,15 +10,17 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    post = Post.new(post_params)
     if post.save
-      flash[:notice] = "「#{@post.title}」を投稿しました"
+      flash[:notice] = "「#{post.title}」を投稿しました"
       redirect_to post
     else
-      redirect_to :back, flash: {
+
+      redirect_back fallback_location: post, flash: {
         post: post,
         error_messages: post.errors.full_messages
       }
+      
     end
   end
 
@@ -31,10 +33,10 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to post
+      redirect_to @post
     else
-      redirect_to :back, flash: {
-        post: post,
+      redirect_back fallback_location: @post, flash: {
+        post: @post,
         error_messages: @post.errors.full_messages
       }
     end
@@ -42,7 +44,6 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    binding.pry
     redirect_to posts_path, flash: { notice: "「#{@post.title}」という投稿が削除されました" }
   end
 
