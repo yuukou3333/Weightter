@@ -1,0 +1,30 @@
+<div class="main posts-index">
+  <div class="container">
+
+    <% if flash[:error_messages]  %>
+      <div class="alert alert-danger">
+        <ul>
+          <% flash[:error_messages].each do |msg|  %>
+            <li><%= msg %></li>
+          <% end %>
+        <ul>
+      </div>
+    <% end %>
+
+
+
+    <% @posts.each do |post| %>
+      <div class="posts-index-item">
+        <div class="post-left">
+        </div>
+        <div class="post-right">
+          <!-- 
+          <div class="post-user-name">
+          </div> 
+          -->
+          <%= link_to(post.title, "/posts/#{post.id}") %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
