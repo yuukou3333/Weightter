@@ -11,6 +11,9 @@
       <p>
         <%= simple_format(@post.body) %>
       </p>
+      <% @post.tags.each do |tag| %>
+        <span class="badge badge-primary"><%= tag.name %></span>
+      <% end %>
       <div class="post-time">
         <%= @post.created_at %>
       </div>

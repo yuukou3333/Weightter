@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+if Rails.env == 'development'
+  Tag.create([
+    {name: "増量中！" },
+    {name: "減量中！" },
+  ])
+end
