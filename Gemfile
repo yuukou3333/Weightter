@@ -43,6 +43,14 @@ gem 'mini_racer'
 gem 'kaminari'
 gem 'rails-i18n'
 
+# ログイン機能
+gem 'devise'
+
+# 日本語化
+gem 'devise-i18n'
+
+# Bootstrap
+gem 'devise-bootstrap-views', '~> 1.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
