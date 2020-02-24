@@ -3,26 +3,31 @@
       <%= link_to "Weightter", root_path, class: "navbar-brand" %>
           <button class="navbar-toggler" data-target="#my-nav" onclick="myFunction(this)" data-toggle="collapse"><span class="bar1"></span> <span class="bar2"></span> <span class="bar3"></span></button>
           <div id="my-nav" class="collapse navbar-collapse">
+
               <ul class="navbar-nav mr-auto">
+              <% if user_signed_in? %>
                   <li class="nav-item"><%= link_to "ホーム", root_path %></li>
                   <li class="nav-item"><%= link_to '投稿一覧', posts_path %></li>
-                  <!-- ログイン時 -->
                   <li class="nav-item"><%= link_to "新規投稿", new_post_path %></li>
-                  <!-- <li class="nav-item"><a class="nav-link" href="#services">投稿一覧</a></li>
-
-                  <li class="nav-item"><a class="nav-link" href="#contact"></a></li> -->
+              <% else %>
+                  <li class="nav-item"><%= link_to "ホーム", root_path %></li>
+                <li class="nav-item"><%= link_to '投稿一覧', posts_path %></li>  
+              <% end %>
               </ul>
-              <!-- ログアウト時 -->
+
+
+              <% if user_signed_in? %>
               <form class="form-inline my-2 my-lg-0">
+            <!-- 後にパスを変更-->
+                  <%= link_to "マイページ",root_path , class: 'btn btn-info my-2 my-sm-0 text-uppercase' %>
+              </form>
+              <% else %>
+               <form class="form-inline my-2 my-lg-0">
                   <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase' %>
                   <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-info my-2 my-sm-0 text-uppercase' %>
-
               </form>
-              <!-- ログイン時 -->
-              <!-- <form class="form-inline my-2 my-lg-0">
-                  <a href="#" class="btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase">ログアウト</a>
-                  <a href="#" class="btn btn-info my-2 my-sm-0 text-uppercase">マイページ</a> 
-              </form> -->
+              <% end %>
+              <!-- ログアウトはマイページにて-->
           </div>
       </div>
   </nav>
