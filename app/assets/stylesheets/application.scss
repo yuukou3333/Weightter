@@ -15,4 +15,10 @@ $main-color: #01e6f8;
  @import "bootstrap";
  @import "home";
  @import "header";
- @import "posts"
+ @import "posts";
+
+ .container-login {
+  @extend .container-fluid;
+  max-width: 576px;
+  padding: 2rem;
+}

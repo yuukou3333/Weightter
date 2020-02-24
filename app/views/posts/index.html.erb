@@ -9,6 +9,7 @@
       }
       %>
     <% end %>
+
     <% if flash[:error_messages]  %>
       <div class="alert alert-danger">
         <ul>
@@ -18,8 +19,6 @@
         <ul>
       </div>
     <% end %>
-
-
 
     <% @posts.each do |post| %>
       <div class="posts-index-item">
