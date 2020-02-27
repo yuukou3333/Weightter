@@ -1,0 +1,22 @@
+<h1>マイページ</h1>
+<h3><%= @user.email %></h3>
+<h2>投稿内容</h2>
+
+    <ul class="user-tabs">
+      <li class="active"><%= link_to("投稿", "/users/#{@user.id}") %></li>
+      <li><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
+    </ul>
+
+       <% @user.posts.each do |post| %>
+        <div class="posts-index-item">
+            <div class="post-right">
+              <div class="post-user-name">
+                <%= link_to(post.user.email, "/users/#{post.user.id}") %>
+              </div>
+              <%= link_to(post.body, "/posts/#{post.id}") %>
+            </div>
+          </div>
+    <% end %>
+
+<%= link_to "ユーザー一覧へ", users_path %>
+<%= link_to "ホームへ戻る", posts_path %>

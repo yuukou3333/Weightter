@@ -9,8 +9,14 @@
                   <li class="nav-item"><%= link_to "ホーム", root_path %></li>
                   <li class="nav-item"><%= link_to '投稿一覧', posts_path %></li>
                   <li class="nav-item"><%= link_to "新規投稿", new_post_path %></li>
+                  <li class="nav-item"><%= link_to 'アカウント編集', edit_user_registration_path %></li>
+                
+    
+                  <li class="nav-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+                  <%= "【ログイン中のアドレス】#{current_user.email}" %>
+          
               <% else %>
-                  <li class="nav-item"><%= link_to "ホーム", root_path %></li>
+                <li class="nav-item"><%= link_to "ホーム", root_path %></li>
                 <li class="nav-item"><%= link_to '投稿一覧', posts_path %></li>  
               <% end %>
               </ul>
@@ -19,12 +25,12 @@
               <% if user_signed_in? %>
               <form class="form-inline my-2 my-lg-0">
             <!-- 後にパスを変更-->
-                  <%= link_to "マイページ",root_path , class: 'btn btn-info my-2 my-sm-0 text-uppercase' %>
+                  <%= link_to "マイページ",user_path(current_user.id) , class: 'btn btn-info my-2 my-sm-0 text-uppercase' %>
               </form>
               <% else %>
                <form class="form-inline my-2 my-lg-0">
-                  <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase' %>
-                  <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-info my-2 my-sm-0 text-uppercase' %>
+                  <%= link_to "ログイン", login_path, class: 'btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase' %>
+                  <%= link_to "新規登録", signup_path, class: 'btn btn-info my-2 my-sm-0 text-uppercase' %>
               </form>
               <% end %>
               <!-- ログアウトはマイページにて-->

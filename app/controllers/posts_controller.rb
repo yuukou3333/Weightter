@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post,only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: [:show, :create,:edit,:destroy]
 
   def index
     @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
@@ -12,6 +13,7 @@ class PostsController < ApplicationController
 
   def create
     post = Post.new(post_params)
+    post.user_id = current_user.id
     if post.save
       flash[:notice] = "「#{post.title}」を投稿しました"
       redirect_to post
@@ -21,7 +23,6 @@ class PostsController < ApplicationController
         post: post,
         error_messages: post.errors.full_messages
       }
-      
     end
   end
 
